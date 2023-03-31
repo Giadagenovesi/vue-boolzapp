@@ -167,5 +167,10 @@ createApp ({
                 }
             ]
         }
+    },
+    methods: {
+        getAvatar(avatar){
+           return `img/avatar${avatar}.jpg`
+        }
     }
 }).mount("#app");
