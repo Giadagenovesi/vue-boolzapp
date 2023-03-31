@@ -7,6 +7,8 @@
     <title>Boolzapp</title>
     <!-- CSS -->
     <link rel="stylesheet" href="css/style.css">
+    <!-- FONT AWSOME -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- VUE -->
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 
@@ -17,18 +19,102 @@
             <div class="app-container">
                 <!-- CHAT -->
                 <div class="chat">
-                    <div class="my-profile"></div>
-                    <div class="banner"></div>
-                    <div class="search-chat"></div>
-                    <div class="chat-list"></div>
+                    <div class="my-profile">
+                        <div class="profile-img">
+                            <img src="img/avatar_io.jpg" alt="My profile picture">
+                            <span>Sofia</span>
+                        </div>
+                        <ul class="menu">
+                            <li>
+                                <a href="">
+                                    <i class="fa-solid fa-circle-notch"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <i class="fa-solid fa-message"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                                </a>
+                            </li>
+                        </ul>
+                        
+                    </div>
+                    <div class="banner">
+                        <i class="fa-solid fa-bell-slash notification-icon"></i>
+                        <div>
+                            <p class="notification">
+                                <a href="">Ricevi notifiche di nuovi messaggi</a>
+                            </p>
+                            <p class="active-notification">
+                                <a href=""> Attiva notifiche desktop</a>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="search-chat">
+                        <label for="search">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </label>
+                        <input type="text" id="search" placeholder="Cerca o inizia una nuova chat">
+                    </div>
+                    <div class="chat-list">
+                        <ul  class="chats">
+                            <li v-for="contact in contacts">
+                                <div class="chat-img">
+                                    <img src="img/avatar{{contact.avatar}}.jpg" alt="">
+                                </div>
+                                <div class="text">
+                                    <p class="name">{{ contact.name }}</p>
+                                    <p class="last-info">Ultimo messaggio inviato</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
                 <!-- /CHAT -->
 
                 <!-- CHAT DETAILS-->
                 <div class="chat-details">
-                    <div class="selected-profile"></div>
+                    <div class="selected-profile">
+                        <div class="profile-img">
+                            <img src="img/avatar_1.jpg" alt="My profile picture">
+                        </div>
+                        <div class="info">
+                            <p class="name">Michele</p>
+                            <p class="last-info">Ultimo accesso oggi alle 12.00</p>
+                        </div>
+                        <ul class="menu">
+                            <li>
+                                <a href="">
+                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <i class="fa-solid fa-paperclip"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                     <div class="selected-chat"></div>
-                    <div class="footer"></div>
+                    <div class="footer">
+                        <a href="" class="emoji">
+                            <i class="fa-regular fa-face-smile"></i>
+                        </a>
+                        <label for="new-message"></label>
+                        <input type="text" id="new-message" placeholder="Cerca o inizia una nuova chat">
+                        <a href="" class="record">
+                            <i class="fa-solid fa-microphone"></i>
+                        </a>
+                    </div>
                 </div>
                 <!-- /CHAT DETAILS-->
             </div>
