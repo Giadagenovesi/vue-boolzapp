@@ -52,31 +52,6 @@ a {
     background-color: white;
     margin: 0 .5rem;
 }
-.name {
-    font-size: .9rem;
-}
-.last-info {
-    font-size: .7rem;
-    color: rgb(107, 106, 106);
-}
-.received {
-    background-color: #D5F9BA;
-    min-width: 250px;
-    max-width: 350px;
-    margin: 3px 50px 3px 0;
-    border-radius: 5px;
-    align-self: flex-end;
-    padding: .6rem .6rem;
-}
-.sent {
-    background-color: white;
-    min-width: 250px;
-    max-width: 350px;
-    margin: 3px 0 3px 50px;
-    border-radius: 5px;
-    align-self: flex-start;
-    padding: .6rem .6rem;
-}
 
 /* Layout */
 body {
@@ -89,7 +64,8 @@ body {
     padding: 20px 0;
 }
 .app-container {
-    width: 1200px;
+    width: 80%;
+    min-width: 800px;
     height: 100%;
     margin: 0 auto;
     display: flex;  
@@ -104,7 +80,7 @@ body {
     height: 100%; 
 }
 
-/* CHAT */
+/* CHAT Left side*/
 .banner {
     width: 100%;
     height: 60px;
@@ -115,7 +91,6 @@ body {
 .search-chat {
     width: 100%;
     height: 40px;
-    /* Debug */
     background-color: whitesmoke;
 }
 .chat-list {
@@ -164,10 +139,14 @@ body {
 }
 
 /* Chat list */
+.active-chat {
+    background-color: blue;
+}
 .chats li {
     border: 1px solid rgb(235, 227, 227);
     padding: .3rem 0 0;
     display: flex;
+    cursor: pointer;
 }
 .chat-img {
     width: 45px;
@@ -178,7 +157,26 @@ body {
 .chat-img img {
     border-radius: 50%;
 }
-/* CHAT DETAILS */
+.text {
+    position: relative;
+    padding-top: .3rem;
+    width: 100%;
+}
+.name {
+    font-size: 1rem;
+}
+.last-info {
+    font-size: .8rem;
+    color: #898686;
+}
+.chat-time {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    font-size: .7rem;
+    color: #898686;
+}
+/* CHAT DETAILS Right side */
 .selected-chat {
     width: 100%;
     height: calc(100% - 100px);
@@ -187,9 +185,27 @@ body {
 }
 /* Selected chat */
 .selected-chat {
+    padding-top: 2.5rem;
+}
+.message-row {
     display: flex;
     flex-direction: column;
-    padding-top: 2.5rem;
+}
+.message {
+    min-width: 250px;
+    max-width: 350px;
+    border-radius: 8px;
+    padding: .6rem .6rem;
+    margin: 5px 30px;
+    font-size: .8rem;
+}
+.received {
+    background-color: white;
+    align-self: flex-start;
+}
+.sent {
+    background-color: #D5F9BA;
+    align-self: flex-end;
 }
 /* Footer */
 .footer a {

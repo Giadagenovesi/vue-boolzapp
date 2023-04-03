@@ -3,6 +3,7 @@ const {createApp} = Vue;
 createApp ({
     data(){
         return {
+            activeIndex: 0,
             contacts: [
                 {
                     name: 'Michele',
@@ -171,6 +172,9 @@ createApp ({
     methods: {
         getAvatar(avatar){
            return `img/avatar${avatar}.jpg`
-        }
+        },
+        showCurrentConversation (clickedIndex) {
+            this.activeIndex = clickedIndex
+        },
     }
 }).mount("#app");

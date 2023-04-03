@@ -17,7 +17,7 @@
     <div id="app">
         <div class="wrapper">
             <div class="app-container">
-                <!-- CHAT -->
+                <!-- CHAT Left side-->
                 <div class="chat">
                     <div class="my-profile">
                         <div class="profile-img">
@@ -62,28 +62,29 @@
                     </div>
                     <div class="chat-list">
                         <ul  class="chats">
-                            <li v-for="contact in contacts">
+                            <li v-for="(contact, index) in contacts" @click="showCurrentConversation(index)">
                                 <div class="chat-img">
                                     <img :src=getAvatar(contact.avatar) alt=" ">
                                 </div>
                                 <div class="text">
                                     <p class="name">{{ contact.name }}</p>
                                     <p class="last-info">Ultimo messaggio inviato</p>
+                                    <span class="chat-time">12.00</span>
                                 </div>
                             </li>
                         </ul>
                     </div>
                 </div>
-                <!-- /CHAT -->
+                <!-- /CHAT Left side-->
 
-                <!-- CHAT DETAILS-->
+                <!-- CHAT DETAILS Right side-->
                 <div class="chat-details">
                     <div class="selected-profile">
                         <div class="profile-img">
-                            <img src="img/avatar_1.jpg" alt="My profile picture">
+                            <img :src="`img/avatar${contacts[activeIndex].avatar}.jpg`" alt="My profile picture">
                         </div>
                         <div class="info">
-                            <p class="name">Michele</p>
+                            <p class="name">{{contacts[activeIndex].name}}</p>
                             <p class="last-info">Ultimo accesso oggi alle 12.00</p>
                         </div>
                         <ul class="menu">
@@ -105,9 +106,12 @@
                         </ul>
                     </div>
                     <div class="selected-chat">
-                        <p class="received"> Lorem </p>
-                        <p class="sent"> Lorem ipsum dolor sit amet </p>
-                        <p class="sent"> Lorem ipsum dolor sit amet </p>
+                        <div class="message-row">
+                            <div class="message" v-for="message in contacts[activeIndex].messages" :class="message.status === 'sent' ? 'sent' : 'received' ">
+                                <p> {{ message.message }}</p> 
+                            </div>
+                        </div>
+
                     </div>
                     <div class="footer">
                         <a href="" class="emoji">
@@ -120,7 +124,7 @@
                         </a>
                     </div>
                 </div>
-                <!-- /CHAT DETAILS-->
+                <!-- /CHAT DETAILS Right side-->
             </div>
         </div>
     </div>
