@@ -8,6 +8,7 @@ createApp ({
         return {
             activeIndex: 0,
             newMessage: "",
+            searchValue: "",
             contacts: [
                 {
                     name: 'Michele',
@@ -173,8 +174,20 @@ createApp ({
             ]
         }
     },
-    
-    methods: {
+    methods: { 
+        filter() {
+            // let contact = "";
+            for (let i = 0; i < this.contacts.length; i ++) {
+                contact = this.contacts[i]
+                console.log(contact.name);
+
+                if(!contact.name.toLowerCase().includes(this.searchValue)) {
+                    contact.visible = false;
+                } else {
+                    contact.visible = true;
+                }   
+            } 
+        },
         getAvatar(avatar){
            return `img/avatar${avatar}.jpg`
         },

@@ -10,7 +10,7 @@
     <!-- FONT AWSOME -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- VUE -->
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.47/vue.global.min.js"></script>
 
 </head>
 <body>
@@ -58,11 +58,11 @@
                         <label for="search">
                             <i class="fa-solid fa-magnifying-glass"></i>
                         </label>
-                        <input type="text" id="search" placeholder="Cerca o inizia una nuova chat">
+                        <input type="text" id="search" placeholder="Cerca o inizia una nuova chat" v-model="searchValue" @keyup.enter="filter">
                     </div>
                     <div class="chat-list">
                         <ul  class="chats">
-                            <li v-for="(contact, index) in contacts" @click="showCurrentConversation(index)" :class="index === activeIndex ? 'active-chat' : ''">
+                            <li v-for="(contact, index) in contacts" @click="showCurrentConversation(index)" :class="[index === activeIndex ? 'active-chat' : '', contact.visible === false ? 'false' : '' ]">
                                 <div class="chat-img">
                                     <img :src=getAvatar(contact.avatar) alt=" ">
                                 </div>
@@ -109,7 +109,7 @@
                         <div class="message-row">
                             <div class="message" v-for="message in contacts[activeIndex].messages" :class="message.status">
                                 <p> {{ message.message }}</p>
-                                <p class="mssg-date">{{ getTime(message.date) }} </p>  
+                                <p class="mssg-date">{{ getTime(message.date)}} </p>  
                             </div>
                         </div>
 

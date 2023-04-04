@@ -99,6 +99,9 @@ body {
     overflow-y: scroll;
     background-color:white;
 }
+.chats li.false {
+    display: none;
+}
 .notification-icon {
     padding: .6rem .5rem;
     border-radius: 50%;
