@@ -140,7 +140,7 @@ body {
 
 /* Chat list */
 .active-chat {
-    background-color: blue;
+    background-color: #E9EBEB;
 }
 .chats li {
     border: 1px solid rgb(235, 227, 227);
@@ -198,6 +198,10 @@ body {
     padding: .6rem .6rem;
     margin: 5px 30px;
     font-size: .8rem;
+}
+.mssg-date {
+    text-align: right;
+    font-size: .6rem;
 }
 .received {
     background-color: white;

@@ -1,9 +1,13 @@
 const {createApp} = Vue;
 
+const dt = luxon.DateTime;
+
+
 createApp ({
     data(){
         return {
             activeIndex: 0,
+            newMessage: "",
             contacts: [
                 {
                     name: 'Michele',
@@ -169,6 +173,7 @@ createApp ({
             ]
         }
     },
+    
     methods: {
         getAvatar(avatar){
            return `img/avatar${avatar}.jpg`
@@ -176,5 +181,35 @@ createApp ({
         showCurrentConversation (clickedIndex) {
             this.activeIndex = clickedIndex
         },
+        getTime(dateStr) {
+            const myDate = dt.fromFormat(dateStr, "dd/MM/yyyy hh:mm:ss");
+            return myDate.toLocaleString(dt.TIME_24_SIMPLE);
+        },
+        addMessage() {
+            if(this.newMessage.length > 0) {
+                this.sendNewMessage();
+                setTimeout (() => {
+                    this.recieveNewMessage();
+                },1000); 
+            }
+        },
+        sendNewMessage() {
+            const message = {
+                date: dt.now().toFormat("dd/MM/yyyy hh:mm:ss"),
+                message: this.newMessage,
+                status: "sent",
+
+            }
+            this.contacts[this.activeIndex].messages.push(message);
+            this.newMessage = "";
+        },
+        recieveNewMessage() {
+            const message = {
+                date: dt.now().toFormat("dd/MM/yyyy hh:mm:ss"),
+                message: "Ok",
+                status: "received",
+            }
+            this.contacts[this.activeIndex].messages.push(message);
+        }
     }
 }).mount("#app");

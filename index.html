@@ -62,7 +62,7 @@
                     </div>
                     <div class="chat-list">
                         <ul  class="chats">
-                            <li v-for="(contact, index) in contacts" @click="showCurrentConversation(index)">
+                            <li v-for="(contact, index) in contacts" @click="showCurrentConversation(index)" :class="index === activeIndex ? 'active-chat' : ''">
                                 <div class="chat-img">
                                     <img :src=getAvatar(contact.avatar) alt=" ">
                                 </div>
@@ -107,8 +107,9 @@
                     </div>
                     <div class="selected-chat">
                         <div class="message-row">
-                            <div class="message" v-for="message in contacts[activeIndex].messages" :class="message.status === 'sent' ? 'sent' : 'received' ">
-                                <p> {{ message.message }}</p> 
+                            <div class="message" v-for="message in contacts[activeIndex].messages" :class="message.status">
+                                <p> {{ message.message }}</p>
+                                <p class="mssg-date">{{ getTime(message.date) }} </p>  
                             </div>
                         </div>
 
@@ -118,7 +119,7 @@
                             <i class="fa-regular fa-face-smile"></i>
                         </a>
                         <label for="new-message"></label>
-                        <input type="text" id="new-message" placeholder="Cerca o inizia una nuova chat">
+                        <input type="text" id="new-message" placeholder="Cerca o inizia una nuova chat"v-model.trim="newMessage" @keyup.enter="addMessage">
                         <a href="" class="record">
                             <i class="fa-solid fa-microphone"></i>
                         </a>
@@ -128,8 +129,11 @@
             </div>
         </div>
     </div>
-    
+
+    <!-- LUXON -->
+    <script src="https://cdn.jsdelivr.net/npm/luxon@3.3.0/build/global/luxon.min.js"></script>
     <!-- JS -->
     <script src="js/script.js"></script>
+
 </body>
 </html>
